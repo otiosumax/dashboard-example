@@ -102,7 +102,7 @@ function DashboardView() {
         </div>
         <div className="charts-grid">
           <Card title="Пассажиропоток и инцеденты">
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" aspect={1.618}>
               <LineChart
                 data={flowData}
                 // responsive
