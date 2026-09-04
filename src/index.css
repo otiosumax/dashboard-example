@@ -1,0 +1,85 @@
+:root {
+  --background: #080810;
+  --foreground: #e2e2f0;
+  --card: #10101e;
+  --card-foreground: #e2e2f0;
+  --primary: #00d4a8;
+  --primary-foreground: #080810;
+  --secondary: #17172a;
+  --secondary-foreground: #a0a0bc;
+  --muted: #17172a;
+  --muted-foreground: #6a6a88;
+  --accent: #00d4a8;
+  --accent-foreground: #080810;
+  --error: #da4e4e;
+  --error-foreground: #080810;
+  --border: #1e1e35;
+  --ring: #00d4a8;
+
+  --spacing: 0.25rem;
+
+  --border-width: calc(var(--spacing) * 0.5);
+  --radius: calc(var(--spacing) * 1);
+  --padding-w: calc(var(--spacing) * 4);
+  --padding-h: calc(var(--spacing) * 2);
+  --scaffold-padding-w: calc(var(--spacing) * 8);
+
+  --font-sans: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --font-mono: Courier, monospace;
+}
+
+html {
+  /* font-size: 1.2vw; */
+  font-size: 14px;
+}
+
+/*
+ступени:
+1024px
+1500px
+2000px
+3000px
+*/
+
+@media (min-width: 1500px) {
+  html {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 2000px) {
+  html {
+    font-size: 28px;
+  }
+}
+
+@media (min-width: 3000px) {
+  html {
+    font-size: 38px;
+  }
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+}
+
+* {
+  scrollbar-width: none;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* :hover {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  } */
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--background);
+  color: var(--foreground);
+}

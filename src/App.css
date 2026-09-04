@@ -1,0 +1,50 @@
+h1 {
+  font-weight: bold;
+  margin: 0;
+}
+h2 {
+  font-weight: bold;
+  margin: 0;
+}
+h3 {
+  font-weight: normal;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  font-size: 1rem;
+  text-decoration: none;
+}
+a:visited {
+  color: var(--muted-foreground);
+}
+
+.button-active,
+a.button-active,
+a.button-active:visited {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.border-b {
+  border-bottom: var(--border-width) solid var(--border);
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+.font-mono {
+  font-family: var(--font-mono);
+}

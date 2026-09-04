@@ -1,0 +1,20 @@
+.header {
+  /* height: 56px; */
+  padding-inline: var(--scaffold-padding-w);
+  display: grid;
+  grid-template-columns: auto auto 1fr auto auto;
+  align-items: center;
+  gap: 2rem;
+
+  .header-navigation {
+    display: flex;
+    /* gap: 1rem; */
+  }
+
+  img {
+    height: 4rem;
+    margin: var(--padding-h) 0;
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+  }
+}

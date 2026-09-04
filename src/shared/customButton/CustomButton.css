@@ -1,0 +1,9 @@
+.custom-button {
+  transition: 200ms;
+  padding: var(--padding-h) var(--padding-w);
+  border-radius: var(--radius);
+
+  p {
+    transition: 200ms;
+  }
+}

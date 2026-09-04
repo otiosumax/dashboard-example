@@ -1,0 +1,26 @@
+.dashboard-view {
+  margin-top: 2rem;
+
+  .statistics-grid {
+    margin-top: 2rem;
+
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .charts-grid {
+    margin-top: 2rem;
+
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+@media (max-width: 1024px) {
+  .dashboard-view .statistics-grid {
+    grid-template-columns: 1fr 1fr;
+    /* grid-template-rows: 1fr 1fr; */
+  }
+}
