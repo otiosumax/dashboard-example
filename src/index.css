@@ -33,27 +33,19 @@ html {
   font-size: 14px;
 }
 
-/*
-ступени:
-1024px
-1500px
-2000px
-3000px
-*/
-
-@media (min-width: 1500px) {
+@media (min-width: 1800px) {
   html {
     font-size: 24px;
   }
 }
 
-@media (min-width: 2000px) {
+@media (min-width: 2400px) {
   html {
     font-size: 28px;
   }
 }
 
-@media (min-width: 3000px) {
+@media (min-width: 3600px) {
   html {
     font-size: 38px;
   }

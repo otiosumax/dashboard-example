@@ -34,7 +34,7 @@ function Header() {
         </Link>
       </nav>
       <div />
-      <p>{currentTime.toLocaleTimeString('ru-RU')}</p>
+      <p>{currentTime.toLocaleTimeString("ru-RU")}</p>
       <img src={pfp} />
     </div>
   );

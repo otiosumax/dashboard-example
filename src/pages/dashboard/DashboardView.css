@@ -14,7 +14,16 @@
 
     display: grid;
     gap: 1rem;
-    grid-template-columns: 2fr 1fr;
+    /* grid-template-columns: 2fr 1fr; */
+  }
+
+  .logs {
+    margin-top: 2rem;
+    .log-line {
+      display: flex;
+      justify-content: space-between;
+      padding: calc(var(--padding-h) * 2) 0;
+    }
   }
 }
 

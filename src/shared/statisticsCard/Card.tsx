@@ -7,13 +7,13 @@ function Card({
   value,
   children,
 }: {
-  title: string;
+  title?: string;
   value?: string;
   children?: ReactNode;
 }) {
   return (
     <div className="statistics-card">
-      <p className="font-mono text-muted">{title.toUpperCase()}</p>
+      <p className="font-mono text-muted">{(title ?? "").toUpperCase()}</p>
       <h1>{value}</h1>
 
       {children}

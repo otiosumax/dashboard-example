@@ -33,6 +33,9 @@ a.button-active:visited {
 .border-b {
   border-bottom: var(--border-width) solid var(--border);
 }
+.border-t {
+  border-top: var(--border-width) solid var(--border);
+}
 
 .bold {
   font-weight: bold;
@@ -47,4 +50,19 @@ a.button-active:visited {
 }
 .font-mono {
   font-family: var(--font-mono);
+}
+
+@keyframes slide-in-up {
+  from {
+    transform: translateY(8rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.slide-in-up {
+  animation: slide-in-up 400ms ease-out;
 }
