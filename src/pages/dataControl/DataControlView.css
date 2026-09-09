@@ -1,0 +1,36 @@
+.data-control-view {
+  margin-top: var(--margin-top);
+
+  .search-and-filter-panel {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    .search-bar {
+      width: clamp(300px, 30rem, 600px);
+
+      color: var(--foreground);
+      
+      background-color: var(--secondary);
+      border: var(--border-width) solid var(--border);
+
+      padding: var(--padding-h) var(--padding-w);
+    }
+    .search-bar::placeholder {
+      color: var(--muted-foreground)
+    }
+
+    .filter-chip {
+      color: var(--muted-foreground);
+      border: var(--border-width) solid var(--border);
+      padding: var(--padding-h) var(--padding-w);
+
+      cursor: pointer;
+    }
+    .filter-chip.active {
+      background-color: var(--secondary);
+      color: var(--foreground);
+    }
+  }
+}
