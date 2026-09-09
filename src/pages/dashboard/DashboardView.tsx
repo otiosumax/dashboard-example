@@ -13,7 +13,7 @@ import {
 import { useEffect, useState } from "react";
 
 import Card from "../../shared/statisticsCard/Card";
-import data from "../../data/data.json";
+import data from "../../data/dashboardData.json";
 
 function DashboardView() {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -139,11 +139,17 @@ function DashboardView() {
           </Card> */}
         </div>
         <div className="logs">
-          <Card title="Журнал событий">
+          <section title="Журнал событий">
+            <p
+              className="text-muted font-mono"
+              style={{ padding: "var(--padding-w)" }}
+            >
+              Журнал событий
+            </p>
             {activity.map((a) => (
               <LogLine info={a} />
             ))}
-          </Card>
+          </section>
         </div>
       </div>
     </div>

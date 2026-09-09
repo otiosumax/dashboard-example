@@ -1,9 +1,7 @@
 .statistics-card {
-  /* width: fit-content; */
-  /* height: fit-content; */
-  padding: 1.5rem 2rem;
+  padding: var(--padding-w);
 
   background-color: var(--card);
-  border: 2px solid var(--border);
+  border: var(--border-width) solid var(--border);
   border-radius: var(--radius);
 }

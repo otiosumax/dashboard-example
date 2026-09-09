@@ -23,6 +23,26 @@ a:visited {
   color: var(--muted-foreground);
 }
 
+button {
+  padding: var(--padding-h) var(--padding-w);
+  height: fit-content;
+
+  background-color: var(--muted);
+  color: var(--muted-foreground);
+  font-weight: bold;
+  /* border: var(--border-width) solid var(--border); */
+  border: none;
+  border-radius: var(--radius);
+}
+
+section {
+  margin-top: var(--margin-top);
+
+  background-color: var(--card);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius);
+}
+
 .button-active,
 a.button-active,
 a.button-active:visited {

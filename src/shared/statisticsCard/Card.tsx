@@ -15,7 +15,6 @@ function Card({
     <div className="statistics-card">
       <p className="font-mono text-muted">{(title ?? "").toUpperCase()}</p>
       <h1>{value}</h1>
-
       {children}
     </div>
   );

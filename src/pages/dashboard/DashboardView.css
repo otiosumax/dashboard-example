@@ -1,8 +1,8 @@
 .dashboard-view {
-  margin-top: 2rem;
+  margin-top: var(--margin-top);
 
   .statistics-grid {
-    margin-top: 2rem;
+    margin-top: var(--margin-top);
 
     display: grid;
     gap: 1rem;
@@ -22,7 +22,7 @@
     .log-line {
       display: flex;
       justify-content: space-between;
-      padding: calc(var(--padding-h) * 2) 0;
+      padding: calc(var(--padding-h) * 2);
     }
   }
 }
