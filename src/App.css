@@ -19,6 +19,9 @@ a {
   font-size: 1rem;
   text-decoration: none;
 }
+a:link {
+  color: var(--muted-foreground);
+}
 a:visited {
   color: var(--muted-foreground);
 }

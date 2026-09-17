@@ -69,19 +69,23 @@
   "modeData": [
     {
       "name": "Метро",
-      "value": 41
+      "value": 41,
+      "fill": "rgb(0, 212, 168)"
     },
     {
       "name": "Автобус",
-      "value": 33
+      "value": 33,
+      "fill": "#f0a500"
     },
     {
       "name": "Троллейбус",
-      "value": 15
+      "value": 15,
+      "fill": "rgb(45, 111, 255)"
     },
     {
       "name": "Трамвай",
-      "value": 11
+      "value": 11,
+      "fill": "rgb(232, 93, 58)"
     }
   ],
   "activity": [

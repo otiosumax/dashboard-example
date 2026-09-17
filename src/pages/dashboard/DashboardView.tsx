@@ -2,9 +2,12 @@ import "./DashboardView.css";
 
 import {
   CartesianGrid,
+  Cell,
   Legend,
   Line,
   LineChart,
+  Pie,
+  PieChart,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -32,6 +35,8 @@ function DashboardView() {
     { month: string; passengers: number; incidents: number }[]
   >([]);
 
+  const [modeData, setModeData] = useState<{ name: string; value: number }[]>([]);
+
   const [activity, setActivity] = useState<
     {
       id: number;
@@ -54,6 +59,7 @@ function DashboardView() {
   useEffect(() => {
     setKpiData(data.kpiData);
     setFlowData(data.flowData);
+    setModeData(data.modeData);
     setActivity(data.activity);
   }, []);
 
@@ -75,6 +81,8 @@ function DashboardView() {
   // fetchData();
   // }, []);
 
+  const capitalizeFirstLetter = (word: string): string => word.charAt(0).toUpperCase() + word.slice(1);
+
   return (
     <div className="dashboard-view slide-in-up">
       <div className="dashboard-title">
@@ -85,6 +93,7 @@ function DashboardView() {
             .toLocaleString("ru-RU", { month: "long", year: "numeric" })
             .replace(" г.", "")}
         </h1>
+
         <div className="statistics-grid">
           {kpiData.map((indicator) => {
             return (
@@ -113,7 +122,8 @@ function DashboardView() {
             );
           })}
         </div>
-        <div className="charts-grid">
+
+        <div className="charts-grid" style={{ gridTemplateColumns: "2fr 1fr" }}>
           <Card
             title="Пассажиропоток и инцеденты"
             value={
@@ -124,20 +134,17 @@ function DashboardView() {
           >
             <FlowChart data={flowData} />
           </Card>
-          {/* <Card title="Распределение по виду транспорта">
-            <ResponsiveContainer width="100%" aspect={1}>
-              <PieChart width="100%" height="100%">
-                <Pie
-                  data={flowData}
-                  dataKey="month"
-                  innerRadius="60%"
-                  outerRadius="100%"
-                  label
-                />
-              </PieChart>
-            </ResponsiveContainer>
-          </Card> */}
+          <Card
+            title="Распределение по виду транспорта"
+            value={
+              capitalizeFirstLetter(currentTime.toLocaleDateString("ru-RU", { month: "long" }
+              ))
+            }>
+
+            <DonutChart data={modeData} />
+          </Card>
         </div>
+
         <div className="logs">
           <section title="Журнал событий">
             <p
@@ -211,6 +218,25 @@ function FlowChart({
           dot={false}
         />
       </LineChart>
+    </ResponsiveContainer>
+  );
+}
+
+function DonutChart({ data = [] }: { data?: { name: string; value: number }[] }) {
+
+  return (
+    <ResponsiveContainer width="100%" aspect={1.4}>
+      <PieChart>
+        <Pie
+          dataKey="value"
+          innerRadius="50%"
+          data={data}
+          isAnimationActive={false}
+          strokeWidth={0}
+        />
+        <Tooltip defaultIndex={1} />
+        <Legend />
+      </PieChart>
     </ResponsiveContainer>
   );
 }

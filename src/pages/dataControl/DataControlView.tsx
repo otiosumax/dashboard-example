@@ -17,7 +17,7 @@ function DataControlView() {
         style={{
           display: "grid",
           gridTemplate: ` "a . c" auto
-                          "b . c" auto / auto 1fr auto`,
+                          "b . c" auto / auto 1fr auto `,
         }}
       >
         <h3 className="text-muted font-mono" style={{ gridArea: "a" }}>
@@ -66,7 +66,9 @@ function DataControlView() {
           ))}
         </div>
       </Card>
-      <section>soso</section>
+      <section>
+        
+      </section>
     </div>
   );
 }
