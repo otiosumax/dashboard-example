@@ -1,5 +1,6 @@
 .dashboard-view {
   margin-top: var(--margin-top);
+  padding-bottom: var(--margin-top);
 
   .statistics-grid {
     margin-top: var(--margin-top);

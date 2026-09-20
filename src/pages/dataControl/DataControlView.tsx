@@ -67,7 +67,7 @@ function DataControlView() {
         </div>
       </Card>
       <section>
-        
+        Тут будут маршруты
       </section>
     </div>
   );

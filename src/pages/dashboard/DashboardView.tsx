@@ -2,7 +2,6 @@ import "./DashboardView.css";
 
 import {
   CartesianGrid,
-  Cell,
   Legend,
   Line,
   LineChart,
