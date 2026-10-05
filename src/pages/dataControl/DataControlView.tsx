@@ -2,6 +2,7 @@ import "./DataControlView.css";
 
 import Card from "../../shared/statisticsCard/Card";
 import { useState, type ReactNode } from "react";
+import DataControlPaths from "./DataControlPaths";
 
 function DataControlView() {
   const statusFilters = ["все", "активный", "приостановлен", "на проверке"];
@@ -66,9 +67,7 @@ function DataControlView() {
           ))}
         </div>
       </Card>
-      <section>
-        Тут будут маршруты
-      </section>
+      <DataControlPaths />
     </div>
   );
 }
