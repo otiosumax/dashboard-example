@@ -11,35 +11,6 @@ import FlowChart from "./FlowChart";
 function DashboardView() {
   const [currentTime, setCurrentTime] = useState(new Date());
 
-  const [kpiData, setKpiData] = useState<
-    {
-      label: string;
-      value: string;
-      up: boolean;
-      delta: string;
-      sub: string;
-    }[]
-  >([]);
-
-  const [flowData, setFlowData] = useState<
-    { month: string; passengers: number; incidents: number }[]
-  >([]);
-
-  const [modeData, setModeData] = useState<{ name: string; value: number }[]>(
-    [],
-  );
-
-  const [activity, setActivity] = useState<
-    {
-      id: number;
-      user: string;
-      action: string;
-      target: string;
-      time: string;
-      type: string;
-    }[]
-  >([]);
-
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentTime(new Date());
@@ -48,30 +19,36 @@ function DashboardView() {
     return () => clearInterval(intervalId);
   }, []);
 
+  type DashboardPayload = {
+    kpiData: typeof data.kpiData;
+    flowData: typeof data.flowData;
+    modeData: typeof data.modeData;
+    activity: typeof data.activity;
+  };
+
+  // мок как стартовое значение; когда появится API - будет перезаписано
+  const [payload, setPayload] = useState<DashboardPayload>(data);
+
   useEffect(() => {
-    setKpiData(data.kpiData);
-    setFlowData(data.flowData);
-    setModeData(data.modeData);
-    setActivity(data.activity);
+    const controller = new AbortController();
+
+    fetch(`${import.meta.env.VITE_API_URL}/dashboard`, {
+      signal: controller.signal,
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json() as Promise<DashboardPayload>;
+      })
+      .then(setPayload)
+      .catch((error: unknown) => {
+        if (error instanceof Error && error.name === "AbortError") return;
+        console.error("Не удалось загрузить данные дашборда:", error);
+      });
+
+    return () => controller.abort();
   }, []);
 
-  // useEffect(() => {
-  // просто для примера
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await fetch(import.meta.env.VITE_API_URL);
-  //     if (!response.ok) {
-  //       throw new Error("vsosal");
-  //     }
-  //     const data = await response.json();
-  //     setKpiData(data);
-  //   } catch (err) {
-  //     console.error("ощибко: ", err);
-  //   }
-  // };
-  // т.к. апи у меня нет - закомментирую
-  // fetchData();
-  // }, []);
+  const { kpiData, flowData, modeData, activity } = payload;
 
   const capitalizeFirstLetter = (word: string): string =>
     word.charAt(0).toUpperCase() + word.slice(1);
@@ -146,7 +123,7 @@ function DashboardView() {
               Журнал событий
             </p>
             {activity.map((a) => (
-              <LogLine info={a} />
+              <LogLine key={a.id} info={a} />
             ))}
           </section>
         </div>

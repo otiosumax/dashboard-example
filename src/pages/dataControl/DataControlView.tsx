@@ -143,7 +143,10 @@ function DataControlView() {
       />
 
       {modal?.kind === "create" && (
-        <RouteFormModal onSubmit={handleSubmit} onClose={() => setModal(null)} />
+        <RouteFormModal
+          onSubmit={handleSubmit}
+          onClose={() => setModal(null)}
+        />
       )}
 
       {modal?.kind === "edit" && (
