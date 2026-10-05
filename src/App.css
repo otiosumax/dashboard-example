@@ -53,6 +53,13 @@ a.button-active:visited {
   color: var(--primary-foreground);
 }
 
+.button-danger,
+a.button-danger,
+a.button-danger:visited {
+  background-color: var(--error);
+  color: var(--error-foreground);
+}
+
 .border-b {
   border-bottom: var(--border-width) solid var(--border);
 }
