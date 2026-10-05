@@ -1,21 +1,12 @@
 import "./DashboardView.css";
 
-import {
-  CartesianGrid,
-  Legend,
-  Line,
-  LineChart,
-  Pie,
-  PieChart,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
 import { useEffect, useState } from "react";
 
 import Card from "../../shared/statisticsCard/Card";
 import data from "../../data/dashboardData.json";
+import LogLine from "./LogLine";
+import DonutChart from "./DonutChart";
+import FlowChart from "./FlowChart";
 
 function DashboardView() {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -34,7 +25,9 @@ function DashboardView() {
     { month: string; passengers: number; incidents: number }[]
   >([]);
 
-  const [modeData, setModeData] = useState<{ name: string; value: number }[]>([]);
+  const [modeData, setModeData] = useState<{ name: string; value: number }[]>(
+    [],
+  );
 
   const [activity, setActivity] = useState<
     {
@@ -80,7 +73,8 @@ function DashboardView() {
   // fetchData();
   // }, []);
 
-  const capitalizeFirstLetter = (word: string): string => word.charAt(0).toUpperCase() + word.slice(1);
+  const capitalizeFirstLetter = (word: string): string =>
+    word.charAt(0).toUpperCase() + word.slice(1);
 
   return (
     <div className="dashboard-view slide-in-up">
@@ -135,11 +129,10 @@ function DashboardView() {
           </Card>
           <Card
             title="Распределение по виду транспорта"
-            value={
-              capitalizeFirstLetter(currentTime.toLocaleDateString("ru-RU", { month: "long" }
-              ))
-            }>
-
+            value={capitalizeFirstLetter(
+              currentTime.toLocaleDateString("ru-RU", { month: "long" }),
+            )}
+          >
             <DonutChart data={modeData} />
           </Card>
         </div>
@@ -158,116 +151,6 @@ function DashboardView() {
           </section>
         </div>
       </div>
-    </div>
-  );
-}
-
-function FlowChart({
-  data,
-}: {
-  data: { month: string; passengers: number; incidents: number }[];
-}) {
-  return (
-    <ResponsiveContainer width="100%" aspect={2.5}>
-      <LineChart
-        data={data}
-        // responsive
-        margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
-      >
-        <Legend position="top" />
-        <CartesianGrid strokeDasharray="3 3" strokeOpacity={0.1} />
-
-        <XAxis
-          dataKey="month"
-          tick={{ fill: "var(--muted-foreground)", fontSize: "0.8rem" }}
-        />
-        <YAxis
-          yAxisId="left"
-          orientation="left"
-          axisLine={false}
-          tickLine={false}
-          width="auto"
-          tick={{ fill: "var(--muted-foreground)", fontSize: "0.8rem" }}
-        />
-        <YAxis
-          yAxisId="right"
-          orientation="right"
-          axisLine={false}
-          tickLine={false}
-          width="auto"
-          tick={{ fill: "var(--muted-foreground)", fontSize: "0.8rem" }}
-        />
-        <Tooltip />
-        <Line
-          yAxisId="left"
-          type="monotone"
-          dataKey="passengers"
-          name="Пассажиры"
-          stroke="#8884d8"
-          strokeWidth={2}
-          dot={false}
-        />
-        <Line
-          yAxisId="right"
-          type="monotone"
-          dataKey="incidents"
-          name="Инциденты"
-          stroke="#82ca9d"
-          strokeWidth={2}
-          dot={false}
-        />
-      </LineChart>
-    </ResponsiveContainer>
-  );
-}
-
-function DonutChart({ data = [] }: { data?: { name: string; value: number }[] }) {
-
-  return (
-    <ResponsiveContainer width="100%" aspect={1.4}>
-      <PieChart>
-        <Pie
-          dataKey="value"
-          innerRadius="50%"
-          data={data}
-          isAnimationActive={false}
-          strokeWidth={0}
-        />
-        <Tooltip defaultIndex={1} />
-        <Legend />
-      </PieChart>
-    </ResponsiveContainer>
-  );
-}
-
-function LogLine({
-  info,
-}: {
-  info: {
-    id: number;
-    user: string;
-    action: string;
-    target: string;
-    time: string;
-    type: string;
-  };
-}) {
-  const COLORS_DICT: { [type: string]: string } = {
-    create: "rgb(0, 212, 168)",
-    warning: "#f0a500",
-    edit: "rgb(45, 111, 255)",
-    delete: "rgb(232, 93, 58)",
-    sync: "rgb(155, 89, 216)",
-    invite: "rgb(0, 212, 168)",
-  };
-
-  return (
-    <div className="log-line border-t">
-      <p>
-        {info.user} <span className="text-muted">{info.action}</span>{" "}
-        <span style={{ color: COLORS_DICT[info.type] }}>{info.target}</span>
-      </p>
-      <span className="text-muted">{info.time}</span>
     </div>
   );
 }
