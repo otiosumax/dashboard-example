@@ -1,0 +1,113 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: var(--padding-w-2);
+
+  background-color: rgba(4, 4, 10, 0.72);
+  backdrop-filter: blur(3px);
+}
+
+.modal {
+  width: min(34rem, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+
+  background-color: var(--card);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  padding: var(--padding-w);
+
+  border-bottom: var(--border-width) solid var(--border);
+}
+
+.modal-close {
+  padding: 0;
+
+  background: none;
+  border: none;
+  color: var(--muted-foreground);
+  font-size: 1rem;
+  line-height: 1;
+
+  cursor: pointer;
+}
+.modal-close:hover {
+  color: var(--foreground);
+}
+
+.modal-body {
+  padding: var(--padding-w);
+}
+
+.modal-text {
+  line-height: 1.5;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+
+  padding: var(--padding-h) var(--padding-w);
+
+  border-top: var(--border-width) solid var(--border);
+}
+
+.route-form {
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--padding-h) * 0.5);
+  }
+  .form-field.wide {
+    grid-column: 1 / -1;
+  }
+
+  .form-field span {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+  }
+
+  input,
+  select {
+    width: 100%;
+    box-sizing: border-box;
+
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+
+    background-color: var(--secondary);
+    border: var(--border-width) solid var(--border);
+    border-radius: var(--radius);
+
+    padding: var(--padding-h) var(--padding-w);
+  }
+
+  input::placeholder {
+    color: var(--muted-foreground);
+  }
+}
