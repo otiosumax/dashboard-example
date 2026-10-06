@@ -1,0 +1,1 @@
+import{t as e}from"./index-DFfLptcw.js";var t=e();function n({title:e,value:n,children:r}){return(0,t.jsxs)(`div`,{className:`statistics-card`,children:[(0,t.jsx)(`p`,{className:`font-mono text-muted`,children:(e??``).toUpperCase()}),(0,t.jsx)(`h1`,{children:n}),r]})}export{n as t};
