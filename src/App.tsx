@@ -9,9 +9,13 @@ import NotFoundView from "./pages/notFound/NotFoundView";
 const DashboardView = lazy(() => import("./pages/dashboard/DashboardView"));
 const DataControlView = lazy(() => import("./pages/dataControl/DataControlView"));
 
+// Базовый путь совпадает с base из vite.config.ts и нужен для деплоя
+// в подкаталог GitHub Pages (/dashboard-example/).
+const basename = import.meta.env.BASE_URL.replace(/\/$/, "") || "/";
+
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <Header />
       <div style={{ padding: "0 var(--scaffold-padding-w)" }}>
         <Suspense

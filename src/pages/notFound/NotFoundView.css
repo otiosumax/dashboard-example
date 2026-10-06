@@ -1,0 +1,32 @@
+.not-found-view {
+    min-height: 70vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+
+    text-align: center;
+}
+
+.not-found-code {
+    /*font-family: var(--font-mono);*/
+    font-size: 6rem;
+    line-height: 1;
+
+    color: var(--primary);
+}
+
+.not-found-text {
+    max-width: 32rem;
+}
+
+.not-found-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: var(--padding-h) var(--padding-w);
+    border-radius: var(--radius);
+
+    transition: 200ms;
+}
