@@ -11,7 +11,7 @@
       width: clamp(300px, 30rem, 600px);
 
       color: var(--foreground);
-      
+
       background-color: var(--secondary);
       border: var(--border-width) solid var(--border);
 
