@@ -3,7 +3,6 @@ import "./DashboardView.css";
 import { useEffect, useState } from "react";
 
 import Card from "../../shared/statisticsCard/Card";
-import data from "../../data/dashboardData.json";
 import LogLine from "./LogLine";
 import DonutChart from "./DonutChart";
 import FlowChart from "./FlowChart";
@@ -20,21 +19,36 @@ function DashboardView() {
   }, []);
 
   type DashboardPayload = {
-    kpiData: typeof data.kpiData;
-    flowData: typeof data.flowData;
-    modeData: typeof data.modeData;
-    activity: typeof data.activity;
+    kpiData: {
+      label: string;
+      value: string;
+      delta: string;
+      up: boolean;
+      sub: string;
+    }[];
+    flowData: { month: string; passengers: number; incidents: number }[];
+    modeData: { name: string; value: number; fill: string }[];
+    activity: {
+      id: number;
+      user: string;
+      action: string;
+      target: string;
+      time: string;
+      type: string;
+    }[];
   };
 
-  // мок как стартовое значение; когда появится API - будет перезаписано
-  const [payload, setPayload] = useState<DashboardPayload>(data);
+  const [payload, setPayload] = useState<DashboardPayload>();
 
   useEffect(() => {
     const controller = new AbortController();
 
-    fetch(`${import.meta.env.VITE_API_URL}/dashboard`, {
-      signal: controller.signal,
-    })
+    fetch(
+      `${import.meta.env.VITE_API_BASE_URL}${import.meta.env.VITE_API_URL_PATH}`,
+      {
+        signal: controller.signal,
+      },
+    )
       .then((response) => {
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         return response.json() as Promise<DashboardPayload>;
@@ -48,7 +62,12 @@ function DashboardView() {
     return () => controller.abort();
   }, []);
 
-  const { kpiData, flowData, modeData, activity } = payload;
+  const { kpiData, flowData, modeData, activity } = payload ?? {
+    kpiData: [],
+    flowData: [],
+    modeData: [],
+    activity: [],
+  };
 
   const capitalizeFirstLetter = (word: string): string =>
     word.charAt(0).toUpperCase() + word.slice(1);
